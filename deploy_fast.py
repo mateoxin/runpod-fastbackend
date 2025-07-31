@@ -17,7 +17,7 @@ RUNPOD_API_URL = "https://api.runpod.ai/v2"
 # GitHub configuration - UPDATE THESE URLs!
 GITHUB_USERNAME = os.environ.get("GITHUB_USERNAME", "mateoxin")
 GITHUB_REPO = os.environ.get("GITHUB_REPO", "runpod-fastbackend")
-GITHUB_RAW_URL = f"https://raw.githubusercontent.com/{GITHUB_USERNAME}/{GITHUB_REPO}/main"
+GITHUB_RAW_URL = f"https://raw.githubusercontent.com/{GITHUB_USERNAME}/{GITHUB_REPO}/master"
 STARTUP_SCRIPT_URL = f"{GITHUB_RAW_URL}/Serverless/FastBackend/startup.sh"
 
 def create_fast_endpoint():

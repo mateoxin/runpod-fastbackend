@@ -81,7 +81,7 @@ python deploy_with_mcp.py
 **Opcja C: Manual RunPod Dashboard**
 1. Stwórz nowy Pod/Endpoint
 2. Image: `runpod/pytorch:2.1.0-py3.10-cuda11.8.0-devel-ubuntu22.04`
-3. Start command: `bash -c 'curl -s https://raw.githubusercontent.com/mateoxin/runpod-fastbackend/main/Serverless/FastBackend/startup.sh | bash'`
+3. Start command: `bash -c 'curl -s https://raw.githubusercontent.com/mateoxin/runpod-fastbackend/master/Serverless/FastBackend/startup.sh | bash'`
 4. Environment variables z `config.env.template`
 
 ## 🎯 Deployment Options
@@ -182,7 +182,7 @@ python deploy_fast.py
 cat startup.sh | grep github.com
 
 # Verify repo is public
-curl -I https://raw.githubusercontent.com/mateoxin/runpod-fastbackend/main/Serverless/FastBackend/handler_fast.py
+curl -I https://raw.githubusercontent.com/mateoxin/runpod-fastbackend/master/Serverless/FastBackend/handler_fast.py
 ```
 
 **2. Environment Setup Timeout**
@@ -266,7 +266,7 @@ python handler_fast.py  # Manual test
 python test_local.py
 
 # 2. Check GitHub accessibility
-curl -I https://raw.githubusercontent.com/mateoxin/runpod-fastbackend/main/Serverless/FastBackend/startup.sh
+curl -I https://raw.githubusercontent.com/mateoxin/runpod-fastbackend/master/Serverless/FastBackend/startup.sh
 
 # 3. Test endpoint
 python quick_test.py

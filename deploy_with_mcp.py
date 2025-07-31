@@ -14,7 +14,7 @@ def get_mcp_pod_config():
     # GitHub configuration
     github_username = os.environ.get("GITHUB_USERNAME", "mateoxin")
     github_repo = os.environ.get("GITHUB_REPO", "runpod-fastbackend")
-    startup_url = f"https://raw.githubusercontent.com/{github_username}/{github_repo}/main/Serverless/FastBackend/startup.sh"
+    startup_url = f"https://raw.githubusercontent.com/{github_username}/{github_repo}/master/Serverless/FastBackend/startup.sh"
     
     config = {
         "name": f"lora-fast-mcp-{int(datetime.now().timestamp())}",
@@ -59,7 +59,7 @@ def get_mcp_template_config():
     
     github_username = os.environ.get("GITHUB_USERNAME", "mateoxin")
     github_repo = os.environ.get("GITHUB_REPO", "runpod-fastbackend")
-    startup_url = f"https://raw.githubusercontent.com/{github_username}/{github_repo}/main/Serverless/FastBackend/startup.sh"
+    startup_url = f"https://raw.githubusercontent.com/{github_username}/{github_repo}/master/Serverless/FastBackend/startup.sh"
     
     config = {
         "name": f"fastbackend-template-{int(datetime.now().timestamp())}",

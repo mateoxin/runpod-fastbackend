@@ -23,7 +23,7 @@ pip install --upgrade "huggingface_hub[cli]"
 
 # Download handler from GitHub (update on every start!)
 echo "📥 Downloading latest handler from GitHub..."
-REPO_URL="https://raw.githubusercontent.com/mateoxin/runpod-fastbackend/main"
+REPO_URL="https://raw.githubusercontent.com/mateoxin/runpod-fastbackend/master"
 curl -o /workspace/handler_fast.py "${REPO_URL}/handler_fast.py" || {
     echo "⚠️ Failed to download from GitHub, using local fallback"
     # Fallback - basic handler

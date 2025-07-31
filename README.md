@@ -171,7 +171,7 @@ python deploy_fast.py
 ### Option 3: Manual RunPod Dashboard
 1. Create new Pod/Endpoint
 2. Use image: `runpod/pytorch:2.1.0-py3.10-cuda11.8.0-devel-ubuntu22.04`
-3. Set Docker start command: `bash -c 'curl -s https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/Serverless/FastBackend/startup.sh | bash'`
+3. Set Docker start command: `bash -c 'curl -s https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/master/Serverless/FastBackend/startup.sh | bash'`
 4. Add environment variables from `config.env.template`
 
 ## 🔄 Updates & Maintenance
