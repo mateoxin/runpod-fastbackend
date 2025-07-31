@@ -54,7 +54,7 @@ def setup_environment():
         ml_packages = [
             "diffusers", "transformers", "accelerate", 
             "datasets", "safetensors", "bitsandbytes", 
-            "peft", "albumentations"
+            "peft", "albumentations", "albumentations" --upgrade
         ]
         
         result = subprocess.run([
@@ -82,6 +82,12 @@ def setup_environment():
                     subprocess.run([
                         sys.executable, "-m", "pip", "install", "-r", req_path
                     ], capture_output=True, text=True)
+        
+        # Step 3.5: Upgrade albumentations
+        print(" [SETUP] Upgrading albumentations...")
+        subprocess.run([
+            sys.executable, "-m", "pip", "install", "-U", "albumentations"
+        ], capture_output=True, text=True)
         
         # Step 4: Setup HuggingFace token
         hf_token = os.environ.get("HF_TOKEN", "your_huggingface_token_here")

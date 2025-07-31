@@ -14,6 +14,9 @@ export WORKSPACE_PATH="/workspace"
 # Create workspace
 mkdir -p /workspace /workspace/models /workspace/training_data /workspace/cache
 
+# Upgrade pip first
+python -m pip install --upgrade pip
+
 # Install minimal requirements (fast)
 echo "📦 Installing minimal requirements..."
 pip install --no-cache-dir runpod pyyaml Pillow python-dotenv
