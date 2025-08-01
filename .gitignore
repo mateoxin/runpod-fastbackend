@@ -80,3 +80,6 @@ local_models/
 # RunPod specific
 runpod_logs/
 pod_output/
+
+# Test dataset folder
+tests/

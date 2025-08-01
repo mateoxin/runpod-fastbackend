@@ -54,7 +54,7 @@ def setup_environment():
         ml_packages = [
             "diffusers", "transformers", "accelerate", 
             "datasets", "safetensors", "bitsandbytes", 
-            "peft", "albumentations", "albumentations" --upgrade
+            "peft", "albumentations"
         ]
         
         result = subprocess.run([
