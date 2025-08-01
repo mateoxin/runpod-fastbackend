@@ -1,0 +1,23 @@
+# 🚀 RunPod FastBackend Requirements
+# Core RunPod dependencies
+
+runpod>=1.7.0
+pyyaml>=6.0
+Pillow>=10.0.0
+python-dotenv>=1.0.0
+requests>=2.31.0
+
+# Optional: Local testing dependencies
+fastapi>=0.104.0
+uvicorn>=0.24.0
+
+# Heavy ML dependencies (installed at runtime)
+# torch  # Installed at runtime for faster RunPod cache usage
+# transformers  # Installed at runtime  
+# diffusers  # Installed at runtime
+# accelerate  # Installed at runtime
+# datasets  # Installed at runtime
+# safetensors  # Installed at runtime
+# bitsandbytes  # Installed at runtime
+# peft  # Installed at runtime
+# albumentations  # Installed at runtime

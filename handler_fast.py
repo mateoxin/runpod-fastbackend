@@ -139,12 +139,39 @@ def lazy_import_heavy_modules():
         print(f"⚠️ [IMPORT] Heavy module import failed: {e}")
         return None
 
+def validate_payload_size(job):
+    """Validate payload size according to RunPod limits"""
+    try:
+        import sys
+        job_str = json.dumps(job)
+        size_mb = len(job_str.encode('utf-8')) / (1024 * 1024)
+        
+        # Check if we're in sync or async mode (RunPod sets this)
+        is_sync = os.environ.get('RUNPOD_REQUEST_TYPE') == 'sync'
+        max_size = 20 if is_sync else 10  # 20MB for sync, 10MB for async
+        
+        if size_mb > max_size:
+            return {
+                "status": "error",
+                "error": f"Payload too large: {size_mb:.2f}MB (max: {max_size}MB)",
+                "timestamp": datetime.now().isoformat()
+            }
+    except Exception as e:
+        print(f"⚠️ [VALIDATION] Payload size check failed: {e}")
+    
+    return None
+
 def handler(job):
     """
-    Ultra-fast handler with lazy loading
+    Ultra-fast handler with lazy loading and RunPod compliance
     """
     try:
         print(f"🎯 [HANDLER] Received job: {job}")
+        
+        # Validate payload size
+        size_error = validate_payload_size(job)
+        if size_error:
+            return size_error
         
         # Extract input
         job_input = job.get("input", {})
@@ -371,6 +398,64 @@ def handle_list_models(modules):
             "timestamp": datetime.now().isoformat()
         }
 
+def handle_local_testing():
+    """Handle local testing arguments"""
+    import sys
+    
+    # Check for test_input argument
+    if "--test_input" in sys.argv:
+        try:
+            test_input_index = sys.argv.index("--test_input") + 1
+            if test_input_index < len(sys.argv):
+                test_input_str = sys.argv[test_input_index]
+                test_input = json.loads(test_input_str)
+                
+                print("🧪 [LOCAL TEST] Running with test input...")
+                result = handler(test_input)
+                print(f"📊 [LOCAL TEST] Result: {json.dumps(result, indent=2)}")
+                return True
+        except (ValueError, json.JSONDecodeError) as e:
+            print(f"❌ [LOCAL TEST] Invalid test input: {e}")
+            return True
+    
+    # Check for serve API argument
+    if "--rp_serve_api" in sys.argv:
+        print("🌐 [LOCAL SERVER] Starting local API server...")
+        print("📡 Server will be available at: http://localhost:8000")
+        print("📨 Send POST requests to: http://localhost:8000/run")
+        print("💡 Example: curl -X POST http://localhost:8000/run -H 'Content-Type: application/json' -d '{\"input\": {\"type\": \"health\"}}'")
+        
+        try:
+            import uvicorn
+            from fastapi import FastAPI, HTTPException
+            from pydantic import BaseModel
+            
+            app = FastAPI(title="RunPod FastBackend Local Server")
+            
+            class JobRequest(BaseModel):
+                input: dict
+            
+            @app.post("/run")
+            async def run_job(job: JobRequest):
+                try:
+                    result = handler(job.dict())
+                    return {"output": result}
+                except Exception as e:
+                    raise HTTPException(status_code=500, detail=str(e))
+            
+            @app.get("/health")
+            async def health():
+                return {"status": "healthy", "server": "local"}
+            
+            uvicorn.run(app, host="0.0.0.0", port=8000)
+            return True
+            
+        except ImportError:
+            print("❌ [LOCAL SERVER] FastAPI/Uvicorn not installed. Install with: pip install fastapi uvicorn")
+            print("💡 [LOCAL SERVER] Falling back to basic handler startup...")
+    
+    return False
+
 if __name__ == "__main__":
     print("🚀 Starting Ultra-Fast RunPod Handler")
     print("=" * 50)
@@ -379,7 +464,14 @@ if __name__ == "__main__":
     print("  - Runtime dependency installation") 
     print("  - Lazy module loading")
     print("  - GitHub-based updates")
+    print("  - Local testing support")
     print("=" * 50)
     
+    # Handle local testing modes
+    if handle_local_testing():
+        print("🏁 [LOCAL] Testing complete, exiting...")
+        sys.exit(0)
+    
     # Start RunPod serverless
+    print("🚀 [RUNPOD] Starting serverless worker...")
     runpod.serverless.start({"handler": handler})
