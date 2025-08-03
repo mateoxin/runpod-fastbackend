@@ -11,13 +11,18 @@ from datetime import datetime
 
 def handler(job):
     """Prosty handler do testowania"""
+    # Multiple logging methods to force visibility
     print(f"🎯 [SIMPLE] Received job: {job}")
+    sys.stderr.write(f"🎯 [STDERR] Received job: {job}\n")
+    sys.stderr.flush()
     
     try:
         job_input = job.get("input", {})
         job_type = job_input.get("type", "test")
         
         print(f"📦 [SIMPLE] Processing: {job_type}")
+        sys.stderr.write(f"📦 [STDERR] Processing: {job_type}\n")
+        sys.stderr.flush()
         
         # Podstawowe odpowiedzi
         if job_type == "health":
@@ -49,6 +54,8 @@ def handler(job):
             }
         
         print(f"✅ [SIMPLE] Returning: {json.dumps(result, indent=2)}")
+        sys.stderr.write(f"✅ [STDERR] Returning: {json.dumps(result, indent=2)}\n")
+        sys.stderr.flush()
         return result
         
     except Exception as e:
@@ -63,6 +70,8 @@ def handler(job):
 
 if __name__ == "__main__":
     print("🚀 [SIMPLE] Starting simple test handler...")
+    sys.stderr.write("🚀 [STDERR] Starting simple test handler...\n")
+    sys.stderr.flush()
     print("=" * 50)
     print("✨ Features:")
     print("  - No heavy dependencies")
