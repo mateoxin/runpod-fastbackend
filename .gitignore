@@ -46,6 +46,7 @@ MANIFEST
 .venv
 env/
 venv/
+test_venv/
 ENV/
 env.bak/
 venv.bak/
@@ -81,5 +82,5 @@ local_models/
 runpod_logs/
 pod_output/
 
-# Test dataset folder
-tests/
+# Test dataset folder - don't push personal data to git
+# tests/ - USUNIĘTE, testy powinny być w repo

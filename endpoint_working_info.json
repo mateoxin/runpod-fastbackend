@@ -1,0 +1,19 @@
+{
+  "id": "5y9b610kv9yei6",
+  "name": "fastbackend-rtx-5090-working",
+  "url": "https://api.runpod.ai/v2/5y9b610kv9yei6",
+  "template_id": "xdm5ch7o8l",
+  "gpu_type": "NVIDIA GeForce RTX 5090",
+  "gpu_name": "RTX 5090",
+  "gpu_memory": "32GB",
+  "container_disk_gb": 100,
+  "volume_gb": 100,
+  "workers_min": 1,
+  "workers_max": 1,
+  "idle_timeout": 60,
+  "flashboot": true,
+  "version": "working",
+  "has_active_worker": true,
+  "created_at": "2025-08-03T10:49:26.734001",
+  "status": "creating"
+}

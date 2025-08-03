@@ -1,0 +1,18 @@
+{
+  "id": "zbmtur5blxqtw5",
+  "name": "fastbackend-rtx3090-fixed",
+  "url": "https://api.runpod.ai/v2/zbmtur5blxqtw5",
+  "template_id": "0w1k821v5j",
+  "gpu_type": "NVIDIA GeForce RTX 3090",
+  "gpu_memory": "24GB",
+  "container_disk_gb": 100,
+  "volume_gb": 100,
+  "workers_min": 1,
+  "workers_max": 1,
+  "idle_timeout": 30,
+  "flashboot": true,
+  "version": "fixed",
+  "has_active_worker": true,
+  "created_at": "2025-08-03T09:51:18.521268",
+  "status": "creating"
+}

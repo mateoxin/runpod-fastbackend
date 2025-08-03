@@ -1,0 +1,7 @@
+# Example training config
+model:
+  name: "test_model"
+  base_model: "stable-diffusion-v1-5"
+training:
+  epochs: 10
+  batch_size: 4

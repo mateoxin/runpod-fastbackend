@@ -1,0 +1,16 @@
+{
+  "id": "n3afussj11mt37",
+  "name": "fastbackend-rtx3090-v2",
+  "url": "https://api.runpod.ai/v2/n3afussj11mt37",
+  "template_id": "vbscfds5w2",
+  "gpu_type": "NVIDIA GeForce RTX 3090",
+  "gpu_memory": "24GB",
+  "container_disk_gb": 100,
+  "volume_gb": 100,
+  "workers_max": 1,
+  "idle_timeout": 10,
+  "flashboot": true,
+  "version": "v2",
+  "created_at": "2025-08-03T09:34:45.749661",
+  "status": "creating"
+}

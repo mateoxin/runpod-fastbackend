@@ -1,0 +1,10 @@
+{
+  "id": "6vi641zor1txhn",
+  "name": "fastbackend-rtx3090-endpoint",
+  "url": "https://api.runpod.ai/v2/6vi641zor1txhn",
+  "template_id": "jayu80q6ss",
+  "gpu_type": "NVIDIA GeForce RTX 3090",
+  "gpu_memory": "24GB",
+  "storage_gb": 100,
+  "workers_max": 2
+}
