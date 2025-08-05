@@ -84,3 +84,9 @@ pod_output/
 
 # Test dataset folder - don't push personal data to git
 # tests/ - USUNIĘTE, testy powinny być w repo
+
+# All project folders - keep only root files
+captions/
+config/
+images/
+models/

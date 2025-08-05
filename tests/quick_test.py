@@ -183,11 +183,14 @@ def get_endpoint_config():
     endpoint_id = os.environ.get("RUNPOD_ENDPOINT_ID")
     api_key = os.environ.get("RUNPOD_API_KEY")
     
+    # Use hardcoded values if not found in environment
     if not endpoint_id:
-        endpoint_id = input("🆔 Enter RunPod Endpoint ID: ").strip()
+        endpoint_id = "ydbbz1ovb2umos"
+        print(f"🆔 Using default endpoint ID: {endpoint_id}")
     
     if not api_key:
-        api_key = input("🔑 Enter RunPod API Key: ").strip()
+        api_key = "rpa_G4713KLVTYYBJYWPO157LX7VVPGV7NZ2K87SX6B17otl1t"
+        print(f"🔑 Using default API key: {api_key[:10]}...")
     
     if not endpoint_id or not api_key:
         print("❌ Missing endpoint ID or API key")
